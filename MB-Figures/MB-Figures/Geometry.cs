@@ -1,4 +1,4 @@
-﻿using MB_Figures.Figures.Interfaces;
+using MB_Figures.Figures.Interfaces;
 
 namespace MB_Figures
 {
