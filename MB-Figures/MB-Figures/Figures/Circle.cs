@@ -20,9 +20,9 @@ namespace MB_Figures.Figures
             Radius = radius;
         }
 
-        public double CalculateArea()
+        public double GetFigureArea()
         {
-            return PI * Math.Pow(Radius, 2d);
+            return Math.Round(PI * Math.Pow(Radius, 2), 5);
         }
     }
 }
