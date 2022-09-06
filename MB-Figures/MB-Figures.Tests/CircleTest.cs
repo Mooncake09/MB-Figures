@@ -6,12 +6,11 @@ namespace MB_Figures.Tests
     public class CircleTest
     {
         [TestMethod]
-        public void GetFigureArea_15_706returned()
+        [DataRow(15, 706.85835)]
+        [DataRow(0.14, 0.06158)]
+        [DataRow(123035.19423221, 47556358369.01787)]
+        public void GetFigureArea_success(double radius, double expected)
         {
-            //arrange
-            double radius = 15d;
-            double expected = 706.85835;
-
             //act
             var circle = new Circle(radius);
             var actual = circle.GetFigureArea();

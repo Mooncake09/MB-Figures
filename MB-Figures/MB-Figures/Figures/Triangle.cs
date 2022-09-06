@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MB_Figures.Figures.Interfaces;
+﻿using MB_Figures.Figures.Interfaces;
 
 namespace MB_Figures.Figures
 {
     public class Triangle : ITriangle
     {
+        private readonly double _epsilon = 0.1;
+
         public double SideA { get; }
         public double SideB { get; }
         public double SideC { get; }
-        public double HalfPerimeter { get; }
 
         public bool IsRectangular { get; }
 
@@ -30,8 +26,6 @@ namespace MB_Figures.Figures
             if (!(sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA))
                 throw new ArgumentException("A triangle cannot exist with given side lengths");
 
-            HalfPerimeter = (sideA + sideB + sideC) / 2;
-
             SideA = sideA;
             SideB = sideB;
             SideC = sideC;
@@ -48,7 +42,7 @@ namespace MB_Figures.Figures
         public double GetFigureArea()
         {
             var halfPerimeter = (SideA + SideB + SideC) / 2;
-            return Math.Sqrt(halfPerimeter * (halfPerimeter - SideA) * (halfPerimeter - SideB) * (halfPerimeter - SideC));
+            return Math.Round(Math.Sqrt(halfPerimeter * (halfPerimeter - SideA) * (halfPerimeter - SideB) * (halfPerimeter - SideC)), 1);
         }
 
         private bool IsTriangleIsRectangular()
@@ -61,8 +55,14 @@ namespace MB_Figures.Figures
             var cathetA = sortedList[1];
             var cathetB = sortedList[0];
 
-            //check by the pythagorean theorem
-            return Math.Pow(hypotenuse, 2) == Math.Pow(cathetA, 2) + Math.Pow(cathetB, 2);
+            var hPow2 = Math.Pow(hypotenuse, 2);
+            var aPow2 = Math.Pow(cathetA, 2);
+            var bPow2 = Math.Pow(cathetB, 2);
+
+            var aPow2_bPow2_Sum = aPow2 + bPow2;
+
+            //check by the pythagorean theorem c^2 = a^2 + b^2
+            return hPow2.EqualTo(aPow2_bPow2_Sum, _epsilon);
         }
     }
 }

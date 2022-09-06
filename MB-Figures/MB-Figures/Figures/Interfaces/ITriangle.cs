@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MB_Figures.Figures.Interfaces
+﻿namespace MB_Figures.Figures.Interfaces
 {
     internal interface ITriangle : IFigure
     {
