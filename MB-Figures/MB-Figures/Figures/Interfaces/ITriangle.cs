@@ -11,7 +11,6 @@ namespace MB_Figures.Figures.Interfaces
         public double SideA { get; }
         public double SideB { get; }
         public double SideC { get; }
-
-        public bool IsTriangleIsRectangular();
+        public bool IsRectangular { get; }
     }
 }

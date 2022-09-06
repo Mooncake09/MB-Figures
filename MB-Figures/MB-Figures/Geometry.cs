@@ -12,6 +12,7 @@ namespace MB_Figures
         /// new Circle, new Triangle
         /// </summary>
         /// <param name="figure"></param>
+        
         public Geometry(IFigure figure)
         {
             Figure = figure;
